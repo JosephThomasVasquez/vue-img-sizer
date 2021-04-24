@@ -1,7 +1,10 @@
 <template>
-  <div class="header">
-    <h1>Hello</h1>
-  </div>
+  <nav class="header">
+    <ul>
+      <li><a href="/" className="nav-links">Home</a></li>
+      <li><a href="/" className="nav-links">Reset</a></li>
+    </ul>
+  </nav>
 </template>
 
 <script>
