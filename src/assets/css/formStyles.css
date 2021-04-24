@@ -1,0 +1,38 @@
+
+.btn-form {
+    border: none;
+    padding: 10px;
+}
+
+/* Hide original file input styling */
+input[type="file"] { 
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+  }
+
+  input[type="file"]:focus + label {
+    outline: 2px solid rgb(89, 0, 255);  /* example focus style */
+  }
+
+  input[type="text"]:focus {
+    outline: 2px solid rgb(89, 0, 255);  /* example focus style */
+  }
+
+  .file-selector-label {
+      display: inline-block;
+      max-height: 20px;
+      background-color: rgb(89, 0, 255);
+      color: white;
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+      border: 2px solid rgb(89, 0, 255);
+  }
+
+  #file-selector-name {
+    display: inline-block;
+    max-height: 20px;
+    padding: 11px;
+    border: 2px dashed rgb(89, 0, 255);
+    border-radius: 0 5px 5px 0;
+  }
