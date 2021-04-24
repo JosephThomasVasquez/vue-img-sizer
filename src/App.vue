@@ -1,7 +1,7 @@
 <template>
   <Header />
   <Title msg="Image Resizer"/>
-  <ImageForm msg="file"/>
+  <ImageForm/>
 </template>
 
 <script>
