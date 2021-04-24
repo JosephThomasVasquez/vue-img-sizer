@@ -1,17 +1,12 @@
 <template>
-  <div class="hello">
+  <div class="title">
     <h1>{{ msg }}</h1>
-    <p>
-      
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Title',
   props: {
     msg: String
   }

@@ -1,17 +1,21 @@
 <template>
   <Header />
-  <HelloWorld msg="Image resizer"/>
+  <Title msg="Image Resizer"/>
+  <ImageForm msg="file"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 import Header from './components/Header.vue';
+import Title from './components/Title.vue';
+import ImageForm from './components/ImageForm.vue';
+
 
 export default {
   name: 'App',
   components: {
     Header,
-    HelloWorld
+    Title,
+    ImageForm
   }
 }
 </script>
