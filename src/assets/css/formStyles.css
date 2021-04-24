@@ -16,7 +16,16 @@ input[type="file"] {
   }
 
   input[type="text"]:focus {
-    outline: 2px solid rgb(89, 0, 255);  /* example focus style */
+    outline: none;  /* example focus style */
+    border: 2px solid rgb(89, 0, 255);
+    border-radius: 5px;
+    background: rgb(246, 241, 255);
+    transition:all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  input[type="text"]:focus:hover {
+    background-color: rgb(198, 167, 255);
+    transition:all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .file-selector-label {
@@ -27,6 +36,12 @@ input[type="file"] {
       padding: 10px;
       border-radius: 5px 0 0 5px;
       border: 2px solid rgb(89, 0, 255);
+      transition:all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .file-selector-label:hover {
+    background-color: rgb(198, 167, 255);
+    transition:all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   #file-selector-name {
