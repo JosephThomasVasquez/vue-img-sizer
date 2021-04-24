@@ -1,5 +1,15 @@
-# client
+# Image Resizer
+Using Vue CLI
+## Todo
+* Add Image read feature
+* Add crop feature
+* Add Resize feature
+* Add multiple files features
 
+## Optional
+* Add save file / multiple files feature
+
+___
 ## Project setup
 ```
 npm install

@@ -1,5 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
   <Header />
   <HelloWorld msg="Image resizer"/>
 </template>
