@@ -7,7 +7,7 @@
         </label>
         <input type="text" id="file-selector-name" placeholder="Filename" v-bind:value="fileName">
     </form>
-    <FilesList />
+    <FilesList v-bind:files="files !== undefined ? files : null"/>
     
   </div>
 </template>
@@ -20,13 +20,15 @@ export default {
   name: 'ImageForm',
   data() {
       return {
-          fileName: 'Filename'
+          fileName: 'Filename',
+          files: []
       }
   },
   methods: {
       getFile(e) {
           console.log(e.target.value);
           console.log(e.target.files);
+          return this.files = [...e.target.files];
       }
   },
   components: {

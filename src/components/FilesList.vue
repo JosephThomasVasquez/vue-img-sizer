@@ -1,12 +1,18 @@
 <template>
     <div>
-        <h1>Files</h1>
+        <h3>{{files.length}} Files</h3>
+        <ul>
+            <li>{{files[0].name}}</li>
+        </ul>
     </div>
 </template>
 
 <script>
     export default {
-        
+        name: 'FilesList',
+        props: {
+            files: Array
+        }
     }
 </script>
 
