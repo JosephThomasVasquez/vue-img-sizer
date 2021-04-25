@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Preview</h3>
-        <canvas width="400px" height="400px" ref="canvas">{{drawImg()}}</canvas>
+        <canvas width="400px" height="400px" ref="canvas">{{createUrl(files[0])}}</canvas>
     </div>
 </template>
 
@@ -10,6 +10,11 @@
         name: 'CanvasView',
         props: {
             files: Array
+        },
+        data() {
+            return {
+
+            }
         },
         methods: {
             createUrl(file) {
@@ -30,13 +35,14 @@
                 }, false);
 
                 console.log(fileUrl)
-                return fileUrl;
+                return this.drawImg(fileUrl);
             },
             drawImg() {
                 if (this.$refs.canvas) {
                     console.log('refs:', this.$refs)
                     const ctx = this.$refs.canvas.getContext('2d');
-                    console.log('cts:', ctx)
+                    console.log('ctx:', ctx)
+                    console.log('this', this)
                     }
                 }
         }
