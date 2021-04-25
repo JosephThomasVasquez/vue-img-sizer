@@ -8,13 +8,14 @@
         <input type="text" id="file-selector-name" placeholder="Filename" v-bind:value="files.length + ' Files'">
     </form>
     <FilesList v-bind:files="files !== undefined ? files : null"/>
-    
+    <CanvasView />
   </div>
 </template>
 
 <script>
 
 import FilesList from './FilesList.vue';
+import CanvasView from './CanvasView.vue';
 
 export default {
   name: 'ImageForm',
@@ -32,7 +33,8 @@ export default {
       }
   },
   components: {
-      FilesList
+      FilesList,
+      CanvasView
   }
 }
 </script>
