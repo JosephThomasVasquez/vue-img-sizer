@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Preview</h3>
-        <div width="400px" height="400px"><img class="img-file" v-bind:src="createUrl(files[0])"></div>
+        <canvas width="400px" height="400px" ref="canvas">{{drawImg()}}</canvas>
     </div>
 </template>
 
@@ -18,8 +18,6 @@
                     return null;
                 }
 
-                
-
                 const fileUrl = URL.createObjectURL(file);
 
                 // Set image source to new Image() constructor
@@ -33,7 +31,14 @@
 
                 console.log(fileUrl)
                 return fileUrl;
-            }
+            },
+            drawImg() {
+                if (this.$refs.canvas) {
+                    console.log('refs:', this.$refs)
+                    const ctx = this.$refs.canvas.getContext('2d');
+                    console.log('cts:', ctx)
+                    }
+                }
         }
     }
 </script>
