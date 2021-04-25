@@ -4,9 +4,9 @@
         <ul>
             <li v-for="file in files" v-bind:key="file">
                 <picture>
-                    <source media="(min-width: 650px)" v-bind:srcset="listFiles(file)">
-                    <source media="(min-width: 465px)" v-bind:srcset="listFiles(file)">
-                    <img v-bind:src="listFiles(file)">
+                    <source media="(min-width: 650px)" class="img-preview" v-bind:srcset="listFiles(file)">
+                    <source media="(min-width: 465px)" class="img-preview" v-bind:srcset="listFiles(file)">
+                    <img class="img-preview" v-bind:src="listFiles(file)">
                 </picture>
                 {{file.name}} {{file.type}} {{fileSize(file.size)}}</li>
         </ul>
