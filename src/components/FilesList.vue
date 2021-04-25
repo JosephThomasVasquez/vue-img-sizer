@@ -2,7 +2,13 @@
     <div>
         <h3 v-if="files.length !== 0">{{files.length}} Files</h3>
         <ul>
-            <li v-for="file in files" v-bind:key="file">{{file.name}} {{file.type}} {{fileSize(file.size)}}</li>
+            <li v-for="file in files" v-bind:key="file">
+                <picture>
+                    <source media="(min-width: 650px)" v-bind:srcset="listFiles(file)">
+                    <source media="(min-width: 465px)" v-bind:srcset="listFiles(file)">
+                    <img v-bind:src="listFiles(file)">
+                </picture>
+                {{file.name}} {{file.type}} {{fileSize(file.size)}}</li>
         </ul>
     </div>
 </template>
@@ -22,14 +28,15 @@
                 const i = Math.floor(Math.log(size) / Math.log(k));
                 return parseFloat((size / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
             },
-            listFiles(files) {
-                if (!files || files === null) {
-                    return 'No Files';
+            listFiles(file) {
+                
+                if (!file || file === null) {
+                    return null;
                 }
-                return files.map((file) => {
-                    console.log(file)
-                        file.name
-                    })
+
+                const fileUrl = URL.createObjectURL(file);
+                console.log(fileUrl)
+                return fileUrl;
             }
         }
     }
