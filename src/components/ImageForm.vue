@@ -5,7 +5,7 @@
         <label for="file-selector-default" class="file-selector-label">Browse
         <input type="file" id="file-selector-default" @change="getFile" multiple>
         </label>
-        <input type="text" id="file-selector-name" placeholder="Filename" v-bind:value="fileName">
+        <input type="text" id="file-selector-name" placeholder="Filename" v-bind:value="files.length + ' Files'">
     </form>
     <FilesList v-bind:files="files !== undefined ? files : null"/>
     
