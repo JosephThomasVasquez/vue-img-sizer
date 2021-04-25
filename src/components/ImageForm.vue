@@ -7,8 +7,8 @@
         </label>
         <input type="text" id="file-selector-name" placeholder="Filename" v-bind:value="files.length + ' Files'">
     </form>
+    <CanvasView v-bind:files="files !== undefined ? files : null"/>
     <FilesList v-bind:files="files !== undefined ? files : null"/>
-    <CanvasView />
   </div>
 </template>
 
