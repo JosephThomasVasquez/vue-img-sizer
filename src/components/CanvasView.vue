@@ -1,7 +1,8 @@
 <template>
     <div>
         <h3>Preview</h3>
-        <canvas width="400px" height="400px" ref="canvas">{{createUrl(files[0])}}</canvas>
+        {{create(files[0])}}
+        <canvas width="400px" height="400px" ref="canvas" class="canvas-preview"></canvas>
     </div>
 </template>
 
@@ -11,15 +12,10 @@
         props: {
             files: Array
         },
-        data() {
-            return {
-
-            }
-        },
+        
         methods: {
-            createUrl(file) {
-                
-                if (!file || file === null) {
+            create(file) {
+            if (!file || file === null) {
                     return null;
                 }
 
@@ -28,23 +24,23 @@
                 // Set image source to new Image() constructor
                 const imgFile = new Image();
                 imgFile.src = fileUrl;
+                console.log('imgFile', imgFile)
 
                 // Run event after image loads
-                imgFile.addEventListener('load', () => {
-                    console.log('Image loaded', imgFile)
-                }, false);
-
-                console.log(fileUrl)
-                return this.drawImg(fileUrl);
-            },
-            drawImg() {
-                if (this.$refs.canvas) {
-                    console.log('refs:', this.$refs)
-                    const ctx = this.$refs.canvas.getContext('2d');
-                    console.log('ctx:', ctx)
-                    console.log('this', this)
-                    }
+                // imgFile.addEventListener('load', this.drawImg(imgFile));
+                imgFile.onload = () => {
+                    this.drawImg(imgFile);
+                };
+                
+        },
+        drawImg(img) {
+            if (this.$refs.canvas && img) {
+                const ctx = this.$refs.canvas.getContext('2d');
+                console.log('ctx:', ctx)
+                // console.log('this', this)
+                console.log('drawImage', ctx.drawImage(img, 33, 71, 104, 124, 21, 20, 87, 104));
                 }
+            }
         }
     }
 </script>
