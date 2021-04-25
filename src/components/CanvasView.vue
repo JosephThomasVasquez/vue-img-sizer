@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Preview</h3>
-        <div width="400px" height="400px"><img v-bind:src="createUrl(files[0])"></div>
+        <div width="400px" height="400px"><img class="img-file" v-bind:src="createUrl(files[0])"></div>
     </div>
 </template>
 
@@ -38,6 +38,8 @@
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.img-file {
+    width: 800px;
+}
 </style>
