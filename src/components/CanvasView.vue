@@ -1,8 +1,8 @@
 <template>
     <div>
         <h3>Preview</h3>
-        {{create(files[0])}}
-        <canvas width="400px" height="400px" ref="canvas" class="canvas-preview"></canvas>
+        
+        <canvas width="800px" height="400px" ref="canvas" class="canvas-preview">{{createUrl(files[0])}}</canvas>
     </div>
 </template>
 
@@ -12,35 +12,44 @@
         props: {
             files: Array
         },
-        
+        data() {
+            return {
+                canvas: null,
+                context: null,
+                getFiles: this.files
+            }
+        },
+        mounted() {
+           
+        },
         methods: {
-            create(file) {
-            if (!file || file === null) {
+            createUrl(file) {
+                if (!file || file === null) {
                     return null;
                 }
-
+                
                 const fileUrl = URL.createObjectURL(file);
-
+                console.log('1. Creating url >', fileUrl)
+                return this.drawImg(fileUrl)
+            },
+            drawImg(url) {
+            
                 // Set image source to new Image() constructor
-                const imgFile = new Image();
-                imgFile.src = fileUrl;
-                console.log('imgFile', imgFile)
+                let imgFile = new Image();
+                imgFile.src = url;
+                console.log('2. Creating image w/ src >', imgFile)
+                
 
                 // Run event after image loads
                 // imgFile.addEventListener('load', this.drawImg(imgFile));
                 imgFile.onload = () => {
-                    this.drawImg(imgFile);
+                    console.log('3. Loaded img >', imgFile)
+                    const ctx = this.$refs.canvas.getContext('2d');
+                    console.log('ctx:', ctx)
+                    console.log('drawImage', ctx.drawImage(imgFile, 0, 0, 104, 124, 21, 20, 87, 104));
+                    ctx.drawImage(imgFile, 0, 0, 200, 100);
                 };
-                
-        },
-        drawImg(img) {
-            if (this.$refs.canvas && img) {
-                const ctx = this.$refs.canvas.getContext('2d');
-                console.log('ctx:', ctx)
-                // console.log('this', this)
-                console.log('drawImage', ctx.drawImage(img, 33, 71, 104, 124, 21, 20, 87, 104));
-                }
-            }
+        }
         }
     }
 </script>

@@ -37,7 +37,7 @@
                 }
 
                 const fileUrl = URL.createObjectURL(file);
-                console.log(fileUrl)
+                // console.log(fileUrl)
                 return fileUrl;
             }
         }
