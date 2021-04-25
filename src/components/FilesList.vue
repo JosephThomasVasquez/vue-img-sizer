@@ -3,12 +3,14 @@
         <h3 v-if="files.length !== 0">{{files.length}} Files</h3>
         <ul>
             <li v-for="file in files" v-bind:key="file">
+                <div class="file-preview">
                 <picture>
                     <source media="(min-width: 650px)" class="img-preview" v-bind:srcset="listFiles(file)">
                     <source media="(min-width: 465px)" class="img-preview" v-bind:srcset="listFiles(file)">
                     <img class="img-preview" v-bind:src="listFiles(file)">
                 </picture>
-                {{file.name}} {{file.type}} {{fileSize(file.size)}}</li>
+                {{file.name}} {{file.type}} {{fileSize(file.size)}}
+                </div></li>
         </ul>
     </div>
 </template>
