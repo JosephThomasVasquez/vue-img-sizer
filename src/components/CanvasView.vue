@@ -1,20 +1,27 @@
 <template>
-    <div>
+    <div id="canvas">
         {{drawImg(files[0])}}
         <h3>Preview</h3>
-        <canvas width="800px" height="400px" id="canvas" ref="canvas" class="canvas-preview"></canvas>
+        <canvas width="800px" height="400px" ref="canvas" class="canvas-preview">
+        </canvas>
     </div>
 </template>
 
 <script>
     export default {
         name: 'CanvasView',
+        el: '#canvas',
         props: {
             files: Array
         },
+        data() {
+            return {
+                fill: "#5ec",
+            }
+        },
         mounted() {
-        this.ctx = this.$refs.canvas.getContext("2d");
-        this.ctx.fillStyle ="#5ec"
+        this.ctx = this.$refs['canvas'].getContext("2d");
+        this.ctx.fillStyle = `${this.fill}`
         this.ctx.fillRect(10, 20, 150, 100)
         console.log('this.ctx >', this.ctx)
         },
@@ -39,7 +46,7 @@
             reader.readAsDataURL(file);
             },
             updateCanvas(img) {
-                this.ctx.clearRect(0, 0, 400, 300)
+                // this.ctx.clearRect(0, 0, 400, 300)
                 // console.log('3. Loaded img >', img);
                 // let canvas = this.$refs.canvas;
                 // let ctx = canvas.getContext("2d");

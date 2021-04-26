@@ -1,14 +1,18 @@
 <template>
   <div class="image-form-container">
     <h3>Choose a file to edit.</h3>
+    
     <form v-on:submit.prevent="onSubmit" class="image-form-">
         <label for="file-selector-default" class="file-selector-label">Browse
         <input type="file" id="file-selector-default" @change="getFile" multiple>
         </label>
         <input type="text" id="file-selector-name" placeholder="Filename" v-bind:value="files.length + ' Files'">
     </form>
+
     <CanvasView v-bind:files="files !== undefined ? files : null"/>
+    
     <FilesList v-bind:files="files !== undefined ? files : null"/>
+
   </div>
 </template>
 
