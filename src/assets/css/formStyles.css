@@ -74,9 +74,13 @@ input[type="file"] {
   }
 
   .canvas-preview {
-      min-width: 200px;
-      min-height: 100px;
-      background-color: #eee;
+      min-width: 400px;
+      min-height: 300px;
+      background-color: white;
       border-radius: 5px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   }
+
+  .img-file {
+    width: 800px;
+}

@@ -13,24 +13,17 @@
             files: Array
         },
         mounted() {
-        //    this.getFiles !== null && this.drawImg(this.Files)
-        //    console.log(this.files)
+        this.ctx = this.$refs.canvas.getContext("2d");
+        this.ctx.fillStyle ="#5ec"
+        this.ctx.fillRect(10, 20, 150, 100)
+        console.log('this.ctx >', this.ctx)
         },
         methods: {
-            // createUrl(file) {
-            //     if (!file || file === null) {
-            //         return null;
-            //     }
-                
-            //     const fileUrl = URL.createObjectURL(file);
-            //     console.log('1. Creating url >', fileUrl)
-            //     return this.drawImg(fileUrl)
-            // },
             drawImg(file) {
                     if (!file || file === null) {
                     return null;
                 }
- 
+
             let reader = new FileReader();
             console.log('reader', reader)
  
@@ -38,6 +31,7 @@
                let imgFile = new Image();
                 imgFile.onload = () => {
                      this.updateCanvas(imgFile);
+                     
                 }
                 imgFile.src = e.target.result;
             };
@@ -45,20 +39,16 @@
             reader.readAsDataURL(file);
             },
             updateCanvas(img) {
-                
-                console.log('3. Loaded img >', img);
-                let canvas = this.$refs.canvas;
-                let ctx = canvas.getContext("2d");
-                console.log('4. Get canvas context >', ctx);
-                // console.log('5. DrawImage to canvas >', ctx.drawImage(img, 0, 0, img.width, img.height));
-                ctx.drawImage(img, 0, 0, img.width, img.height);
+                this.ctx.clearRect(0, 0, 400, 300)
+                // console.log('3. Loaded img >', img);
+                // let canvas = this.$refs.canvas;
+                // let ctx = canvas.getContext("2d");
+                // ctx.fillStyle ='#777';
+                // ctx.fillRect(10, 20, 150, 100)
+                // console.log('4. Get canvas context >', ctx);
+                console.log('5. DrawImage to canvas >', img, 0, 0, img.width, img.height);
+                this.ctx.drawImage(img, 0, 0, img.width, img.height);
             }
         }
     }
 </script>
-
-<style scoped>
-.img-file {
-    width: 800px;
-}
-</style>
