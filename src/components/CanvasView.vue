@@ -1,8 +1,8 @@
 <template>
     <div>
+        {{drawImg(files[0])}}
         <h3>Preview</h3>
-        
-        <canvas width="800px" height="400px" ref="canvas" class="canvas-preview">{{createUrl(files[0])}}</canvas>
+        <canvas width="800px" height="400px" id="canvas" ref="canvas" class="canvas-preview"></canvas>
     </div>
 </template>
 
@@ -12,44 +12,47 @@
         props: {
             files: Array
         },
-        data() {
-            return {
-                canvas: null,
-                context: null,
-                getFiles: this.files
-            }
-        },
         mounted() {
-           
+        //    this.getFiles !== null && this.drawImg(this.Files)
+        //    console.log(this.files)
         },
         methods: {
-            createUrl(file) {
-                if (!file || file === null) {
+            // createUrl(file) {
+            //     if (!file || file === null) {
+            //         return null;
+            //     }
+                
+            //     const fileUrl = URL.createObjectURL(file);
+            //     console.log('1. Creating url >', fileUrl)
+            //     return this.drawImg(fileUrl)
+            // },
+            drawImg(file) {
+                    if (!file || file === null) {
                     return null;
                 }
-                
-                const fileUrl = URL.createObjectURL(file);
-                console.log('1. Creating url >', fileUrl)
-                return this.drawImg(fileUrl)
-            },
-            drawImg(url) {
-            
-                // Set image source to new Image() constructor
-                let imgFile = new Image();
-                imgFile.src = url;
-                console.log('2. Creating image w/ src >', imgFile)
-                
-
-                // Run event after image loads
-                // imgFile.addEventListener('load', this.drawImg(imgFile));
+ 
+            let reader = new FileReader();
+            console.log('reader', reader)
+ 
+            reader.onload = (e) => {
+               let imgFile = new Image();
                 imgFile.onload = () => {
-                    console.log('3. Loaded img >', imgFile)
-                    const ctx = this.$refs.canvas.getContext('2d');
-                    console.log('ctx:', ctx)
-                    console.log('drawImage', ctx.drawImage(imgFile, 0, 0, 104, 124, 21, 20, 87, 104));
-                    ctx.drawImage(imgFile, 0, 0, 200, 100);
-                };
-        }
+                     this.updateCanvas(imgFile);
+                }
+                imgFile.src = e.target.result;
+            };
+ 
+            reader.readAsDataURL(file);
+            },
+            updateCanvas(img) {
+                
+                console.log('3. Loaded img >', img);
+                let canvas = this.$refs.canvas;
+                let ctx = canvas.getContext("2d");
+                console.log('4. Get canvas context >', ctx);
+                // console.log('5. DrawImage to canvas >', ctx.drawImage(img, 0, 0, img.width, img.height));
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+            }
         }
     }
 </script>
